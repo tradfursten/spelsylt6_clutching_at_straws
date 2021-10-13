@@ -12,6 +12,16 @@ shortcut = SubResource( 1 )
 [node name="Title" type="Node2D"]
 script = ExtResource( 2 )
 
+[node name="ColorRect" type="ColorRect" parent="."]
+margin_left = -41.0
+margin_top = -28.0
+margin_right = 1093.0
+margin_bottom = 642.0
+color = Color( 0, 0, 0, 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
 [node name="TextureRect" type="TextureRect" parent="."]
 anchor_left = 0.5
 anchor_top = 0.5
@@ -28,10 +38,10 @@ __meta__ = {
 }
 
 [node name="Button" type="Button" parent="."]
-margin_left = 474.824
-margin_top = 392.66
-margin_right = 515.824
-margin_bottom = 412.66
+margin_left = 412.355
+margin_top = 381.421
+margin_right = 569.355
+margin_bottom = 440.421
 shortcut = SubResource( 2 )
 text = "start"
 flat = true
