@@ -56,6 +56,10 @@ func _on_KinematicBody2D_input_event(viewport: Node, event: InputEvent, shape_id
 					$AnimationPlayer.play("holding_chicken")
 					gravity = 20
 					$EffectTimer.start(0.7)
+				"Blood":
+					$AnimationPlayer.play("bat")
+					$Particles2D.emitting = false
+					gravity = 0
 			
 		inventory.drag_data = null
 

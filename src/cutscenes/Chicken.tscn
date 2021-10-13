@@ -73,14 +73,13 @@ BloodParticleScene = ExtResource( 2 )
 RandomVelocity = 200.0
 
 [node name="Player" type="RigidBody2D" parent="."]
-position = Vector2( 517.966, -34.0094 )
+position = Vector2( 518.814, 37.2104 )
 __meta__ = {
 "_edit_group_": true
 }
 
 [node name="AnimatedSprite" type="AnimatedSprite" parent="Player"]
 frames = SubResource( 5 )
-frame = 2
 playing = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Player"]
@@ -112,5 +111,10 @@ shape = SubResource( 7 )
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Anvil"]
 position = Vector2( 0.931702, 7.56506 )
 shape = SubResource( 8 )
+
+[node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2( 526.824, 311.622 )
+current = true
+zoom = Vector2( 0.8, 0.8 )
 
 [connection signal="body_entered" from="Anvil/Anvil" to="." method="_on_Anvil_body_entered"]

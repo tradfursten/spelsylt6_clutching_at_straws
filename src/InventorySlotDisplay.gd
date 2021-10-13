@@ -26,5 +26,11 @@ func can_drop_data(_position, data):
 	return data is Dictionary and data.has("item")
 	
 func drop_data(_position: Vector2, data) -> void:
-	pass
+	print("Drop data: " + data.item.name)
+	var my_item_index = get_index()
+	var my_item = inventory.items[my_item_index]
+	print("Combine " + data.item.name + " with " + my_item.name)
+	my_item = my_item.combine(data.item)
+	inventory.set_item(my_item_index, my_item)
+	
 	
