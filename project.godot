@@ -26,9 +26,13 @@ _global_script_class_icons={
 
 [application]
 
-config/name="Spelsylt6_ClutchingAtStraws"
-run/main_scene="res://src/Main.tscn"
+config/name="Clutching at Straws - Spelsylt #6"
+run/main_scene="res://src/SceneSwitcher.tscn"
 config/icon="res://icon.png"
+
+[autoload]
+
+SignalManager="*res://src/SignalManager.gd"
 
 [importer_defaults]
 

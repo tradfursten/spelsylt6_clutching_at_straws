@@ -1,6 +1,9 @@
 extends Node2D
 var inventory = preload("res://assets/items/inventory.tres")
 
+func get_name():
+	"Falling"
+
 func _ready() -> void:
 	for child in $items.get_children():
 		child.connect("pick_up_item", self, "_on_pick_up_item")
@@ -19,3 +22,4 @@ func _on_pick_up_item(child, item):
 	inventory.add_item(item)
 	child.queue_free()
 	
+

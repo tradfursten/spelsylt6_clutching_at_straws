@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=2]
+[gd_scene load_steps=23 format=2]
 
 [ext_resource path="res://assets/player/falling.png" type="Texture" id=1]
 [ext_resource path="res://src/Player.gd" type="Script" id=2]
@@ -6,23 +6,41 @@
 [ext_resource path="res://src/BloodParticle.tscn" type="PackedScene" id=4]
 [ext_resource path="res://assets/player/dead.png" type="Texture" id=5]
 [ext_resource path="res://assets/player/holding_anvil.png" type="Texture" id=6]
+[ext_resource path="res://assets/player/holding_chicken.png" type="Texture" id=7]
 
-[sub_resource type="Gradient" id=8]
+[sub_resource type="Gradient" id=1]
 colors = PoolColorArray( 1, 1, 1, 1, 0.972549, 1, 0.0627451, 1 )
 
-[sub_resource type="AtlasTexture" id=1]
+[sub_resource type="AtlasTexture" id=2]
+atlas = ExtResource( 7 )
+region = Rect2( 0, 0, 32, 46 )
+
+[sub_resource type="AtlasTexture" id=3]
+atlas = ExtResource( 7 )
+region = Rect2( 32, 0, 32, 46 )
+
+[sub_resource type="AtlasTexture" id=4]
+atlas = ExtResource( 7 )
+region = Rect2( 64, 0, 32, 46 )
+
+[sub_resource type="AtlasTexture" id=5]
 atlas = ExtResource( 1 )
 region = Rect2( 0, 0, 32, 32 )
 
-[sub_resource type="AtlasTexture" id=2]
+[sub_resource type="AtlasTexture" id=6]
 atlas = ExtResource( 1 )
 region = Rect2( 32, 0, 32, 32 )
 
-[sub_resource type="SpriteFrames" id=3]
+[sub_resource type="SpriteFrames" id=7]
 animations = [ {
 "frames": [ ExtResource( 5 ) ],
 "loop": true,
 "name": "dead",
+"speed": 5.0
+}, {
+"frames": [ SubResource( 2 ), SubResource( 3 ), SubResource( 4 ) ],
+"loop": true,
+"name": "holding_chicken",
 "speed": 5.0
 }, {
 "frames": [ ExtResource( 6 ) ],
@@ -30,17 +48,17 @@ animations = [ {
 "name": "holding_anvil",
 "speed": 5.0
 }, {
-"frames": [ SubResource( 1 ), SubResource( 2 ) ],
+"frames": [ SubResource( 5 ), SubResource( 6 ) ],
 "loop": true,
 "name": "idle",
 "speed": 8.0
 } ]
 
-[sub_resource type="CapsuleShape2D" id=6]
+[sub_resource type="CapsuleShape2D" id=8]
 radius = 6.45151
 
 [sub_resource type="Animation" id=9]
-resource_name = "breaking"
+resource_name = "breaking_left"
 step = 0.5
 tracks/0/type = "bezier"
 tracks/0/path = NodePath("AnimatedSprite:rotation_degrees")
@@ -49,8 +67,8 @@ tracks/0/loop_wrap = true
 tracks/0/imported = false
 tracks/0/enabled = true
 tracks/0/keys = {
-"points": PoolRealArray( 0, -0.25, 0, 0.25, 0, -35, -0.25, 0, 0.25, 0 ),
-"times": PoolRealArray( 0, 1 )
+"points": PoolRealArray( 35, -0.25, 0, 0.25, 0 ),
+"times": PoolRealArray( 0 )
 }
 tracks/1/type = "bezier"
 tracks/1/path = NodePath("CollisionShape2D:rotation_degrees")
@@ -59,12 +77,58 @@ tracks/1/loop_wrap = true
 tracks/1/imported = false
 tracks/1/enabled = true
 tracks/1/keys = {
-"points": PoolRealArray( -52, -0.25, 0, 0.25, 0, -95.4, -0.25, 0, 0.25, 0 ),
-"times": PoolRealArray( 0, 1 )
+"points": PoolRealArray( -91, -0.25, 0, 0.25, 0 ),
+"times": PoolRealArray( 0 )
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("AnimatedSprite:flip_h")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ true ]
 }
 
-[sub_resource type="Animation" id=5]
-resource_name = "dead"
+[sub_resource type="Animation" id=10]
+step = 0.5
+tracks/0/type = "bezier"
+tracks/0/path = NodePath("AnimatedSprite:rotation_degrees")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"points": PoolRealArray( 0, -0.25, 0, 0.25, 0 ),
+"times": PoolRealArray( 0 )
+}
+tracks/1/type = "bezier"
+tracks/1/path = NodePath("CollisionShape2D:rotation_degrees")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"points": PoolRealArray( -91, -0.25, 0, 0.25, 0 ),
+"times": PoolRealArray( 0 )
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("AnimatedSprite:flip_h")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ false ]
+}
+
+[sub_resource type="Animation" id=11]
 tracks/0/type = "value"
 tracks/0/path = NodePath("AnimatedSprite:animation")
 tracks/0/interp = 1
@@ -114,8 +178,82 @@ tracks/3/keys = {
 "values": [ 12.0 ]
 }
 
-[sub_resource type="Animation" id=7]
-resource_name = "falling"
+[sub_resource type="Animation" id=12]
+resource_name = "falling_left"
+tracks/0/type = "value"
+tracks/0/path = NodePath("AnimatedSprite:animation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ "idle" ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("CollisionShape2D:rotation_degrees")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ 52.6 ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("CollisionShape2D:shape:height")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ 20.0 ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("Particles2D:emitting")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ true ]
+}
+tracks/4/type = "value"
+tracks/4/path = NodePath("AnimatedSprite:rotation_degrees")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ 0.0 ]
+}
+tracks/5/type = "value"
+tracks/5/path = NodePath("AnimatedSprite:flip_h")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ true ]
+}
+
+[sub_resource type="Animation" id=13]
 tracks/0/type = "value"
 tracks/0/path = NodePath("AnimatedSprite:animation")
 tracks/0/interp = 1
@@ -176,9 +314,20 @@ tracks/4/keys = {
 "update": 0,
 "values": [ 0.0 ]
 }
+tracks/5/type = "value"
+tracks/5/path = NodePath("AnimatedSprite:flip_h")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ false ]
+}
 
-[sub_resource type="Animation" id=10]
-resource_name = "holding_anvil"
+[sub_resource type="Animation" id=14]
 tracks/0/type = "value"
 tracks/0/path = NodePath("AnimatedSprite:animation")
 tracks/0/interp = 1
@@ -202,7 +351,34 @@ tracks/1/keys = {
 "times": PoolRealArray( 0.1 )
 }
 
-[node name="KinematicBody2D" type="KinematicBody2D"]
+[sub_resource type="Animation" id=15]
+step = 1.0
+tracks/0/type = "value"
+tracks/0/path = NodePath("AnimatedSprite:animation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ "holding_chicken" ]
+}
+tracks/1/type = "bezier"
+tracks/1/path = NodePath("CollisionShape2D:rotation_degrees")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"points": PoolRealArray( 0, -0.25, 0, 0.25, 0 ),
+"times": PoolRealArray( 0 )
+}
+
+[node name="KinematicBody2D" type="KinematicBody2D" groups=[
+"cutscene_changer",
+]]
 input_pickable = true
 collision_mask = 7
 script = ExtResource( 2 )
@@ -214,6 +390,7 @@ __meta__ = {
 current = true
 zoom = Vector2( 0.8, 0.8 )
 smoothing_enabled = true
+offset_v = 1.0
 
 [node name="Particles2D" type="CPUParticles2D" parent="."]
 amount = 21
@@ -234,25 +411,32 @@ linear_accel = -53.77
 linear_accel_random = 1.0
 scale_amount = 5.0
 scale_amount_random = 1.0
-color_ramp = SubResource( 8 )
+color_ramp = SubResource( 1 )
 
 [node name="AnimatedSprite" type="AnimatedSprite" parent="."]
-frames = SubResource( 3 )
-animation = "holding_anvil"
+rotation = 0.610865
+frames = SubResource( 7 )
+animation = "idle"
+frame = 1
 playing = true
+flip_h = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-shape = SubResource( 6 )
+rotation = -1.58825
+shape = SubResource( 8 )
 
 [node name="BloodSplaterComponent" parent="." instance=ExtResource( 3 )]
 BloodParticleScene = ExtResource( 4 )
 BloodParticleNumber = 64
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
-anims/breaking = SubResource( 9 )
-anims/dead = SubResource( 5 )
-anims/falling = SubResource( 7 )
-anims/holding_anvil = SubResource( 10 )
+anims/breaking_left = SubResource( 9 )
+anims/breaking_right = SubResource( 10 )
+anims/dead = SubResource( 11 )
+anims/falling_left = SubResource( 12 )
+anims/falling_right = SubResource( 13 )
+anims/holding_anvil = SubResource( 14 )
+anims/holding_chicken = SubResource( 15 )
 
 [node name="EffectTimer" type="Timer" parent="."]
 wait_time = 0.6
