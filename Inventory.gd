@@ -2,9 +2,11 @@ extends Resource
 class_name Inventory
 
 signal items_changed(indexes)
+signal item_added(item)
+
+var drag_data = null
 
 export(Array, Resource) var items = [
-	null, null, null
 ]
 
 func set_item(item_index, item):
@@ -26,4 +28,7 @@ func remove_item(item_index):
 	emit_signal("items_changed", [item_index])
 	return previous_item
 
+func add_item(item):
+	items.push_back(item)
+	emit_signal("item_added", item)
  

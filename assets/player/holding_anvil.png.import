@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/background.png-af8116bd94e27df8cdb7b0ec54dd4e56.stex"
+path="res://.import/holding_anvil.png-00d1055489148b721ae424770eb4f914.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/background/background.png"
-dest_files=[ "res://.import/background.png-af8116bd94e27df8cdb7b0ec54dd4e56.stex" ]
+source_file="res://assets/player/holding_anvil.png"
+dest_files=[ "res://.import/holding_anvil.png-00d1055489148b721ae424770eb4f914.stex" ]
 
 [params]
 
