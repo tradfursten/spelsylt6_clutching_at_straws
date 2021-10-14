@@ -11,6 +11,9 @@ func _ready() -> void:
 func _physics_process(delta: float) -> void:
 	if Input.is_action_pressed("ui_accept"):
 		get_tree().reload_current_scene()
+	if Input.is_action_just_released("ui_left_mouse") and inventory.drag_data != null:
+		inventory.set_item(inventory.drag_data.item_index, inventory.drag_data.item)
+		print("Dropped item " + inventory.drag_data.item.name)
 
 
 func _on_Area2D_body_entered(body: Node) -> void:

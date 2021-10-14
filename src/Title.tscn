@@ -37,11 +37,19 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Button" type="Button" parent="."]
-margin_left = 412.355
-margin_top = 381.421
-margin_right = 569.355
-margin_bottom = 440.421
+[node name="ColorRect2" type="ColorRect" parent="."]
+margin_left = 357.555
+margin_top = 365.511
+margin_right = 631.555
+margin_bottom = 478.511
+color = Color( 1, 0.584314, 0, 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Button" type="Button" parent="ColorRect2"]
+anchor_right = 1.0
+anchor_bottom = 1.0
 shortcut = SubResource( 2 )
 text = "start"
 flat = true
@@ -49,4 +57,4 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[connection signal="pressed" from="Button" to="." method="_on_Button_pressed"]
+[connection signal="pressed" from="ColorRect2/Button" to="." method="_on_Button_pressed"]
