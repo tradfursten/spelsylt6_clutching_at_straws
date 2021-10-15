@@ -5,24 +5,18 @@ class_name Item
 export(String) var name = ""
 export(Texture) var texture
 
+func get_key(name, other_name):
+	var key: String
+	if name < other_name:
+		key = name + ":" + other_name
+	else:
+		key = other_name + ":" + name
+	return key
+	
 func combine(other):
-	print("Combining!")
-	match name:
-		"Chicken":
-			return combine_chicken(other)
-		"Anvil":
-			return combine_anvil(other)
-	return self
+	var key = get_key(name, other.name)
+	if ItemCombinations.COMBINATIONS.has(key):
+		return ItemCombinations.COMBINATIONS[key]
+	else:
+		return null
 
-
-func combine_chicken(other):
-	match other.name:
-		"Anvil":
-			return load("res://assets/items/blood.tres")
-	return self
-			
-func combine_anvil(other):
-	match other.name:
-		"Chicken":
-			return load("res://assets/items/blood.tres")
-	return self

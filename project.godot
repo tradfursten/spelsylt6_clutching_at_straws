@@ -33,6 +33,13 @@ config/icon="res://icon.png"
 [autoload]
 
 SignalManager="*res://src/SignalManager.gd"
+ItemCombinations="*res://src/items/ItemCombinations.gd"
+Hud="*res://src/HUD.tscn"
+Audioplayer="*res://src/Audioplayer.tscn"
+
+[display]
+
+window/size/resizable=false
 
 [importer_defaults]
 

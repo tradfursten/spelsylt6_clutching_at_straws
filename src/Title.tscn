@@ -10,6 +10,7 @@ action = "ui_select"
 shortcut = SubResource( 1 )
 
 [node name="Title" type="Node2D"]
+position = Vector2( 0, -0.407715 )
 script = ExtResource( 2 )
 
 [node name="ColorRect" type="ColorRect" parent="."]
@@ -37,24 +38,18 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="ColorRect2" type="ColorRect" parent="."]
-margin_left = 357.555
-margin_top = 365.511
-margin_right = 631.555
-margin_bottom = 478.511
-color = Color( 1, 0.584314, 0, 1 )
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="Button" type="Button" parent="ColorRect2"]
+[node name="Button" type="Button" parent="."]
 anchor_right = 1.0
 anchor_bottom = 1.0
+margin_left = 429.666
+margin_top = 389.909
+margin_right = 567.666
+margin_bottom = 409.909
 shortcut = SubResource( 2 )
-text = "start"
+text = "Press space to start"
 flat = true
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[connection signal="pressed" from="ColorRect2/Button" to="." method="_on_Button_pressed"]
+[connection signal="pressed" from="Button" to="." method="_on_Button_pressed"]

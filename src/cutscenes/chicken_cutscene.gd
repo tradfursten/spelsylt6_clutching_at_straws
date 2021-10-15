@@ -6,19 +6,6 @@ var dead = false
 # Declare member variables here. Examples:
 # var a: int = 2
 # var b: String = "text"
-
-
-# Called when the node enters the scene tree for the first time.
-func _ready() -> void:
-	pass # Replace with function body.
-
-func _physics_process(delta: float) -> void:
-	if Input.is_action_pressed("ui_select"):
-		$BloodSplaterComponent.splatter(64)
-
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-#func _process(delta: float) -> void:
-#	pass
 func get_name():
 	"Chicken"
 
@@ -37,4 +24,8 @@ func kill_player():
 	$Player/AnimatedSprite.play("dead")
 	$Player.linear_velocity = Vector2()
 	$BloodSplaterComponent.splatter(64)
+	$Timer.start()
 
+func _on_Timer_timeout() -> void:
+	SignalManager.emit_signal("death", "chicken")
+	SignalManager.emit_signal("cutscene", "game_over")

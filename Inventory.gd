@@ -32,3 +32,5 @@ func add_item(item):
 	items.push_back(item)
 	emit_signal("item_added", item)
  
+func reset():
+	items = []

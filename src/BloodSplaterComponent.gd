@@ -27,6 +27,7 @@ func splatter(particles_to_spawn := -1):
 	
 	for _i in range(particles_to_spawn):
 		spawnedParticle = BloodParticleScene.instance()
+		spawnedParticle.add_to_group("blood")
 		get_tree().root.add_child(spawnedParticle)
 		spawnedParticle.global_position = global_position
 		spawnedParticle.linear_velocity = Vector2(rnd.randf_range(-RandomVelocity, RandomVelocity), rnd.randf_range(-RandomVelocity, RandomVelocity))
