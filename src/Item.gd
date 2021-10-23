@@ -5,12 +5,12 @@ class_name Item
 export(String) var name = ""
 export(Texture) var texture
 
-func get_key(name, other_name):
+func get_key(item_name, other_name):
 	var key: String
-	if name < other_name:
-		key = name + ":" + other_name
+	if item_name < other_name:
+		key = item_name + ":" + other_name
 	else:
-		key = other_name + ":" + name
+		key = other_name + ":" + item_name
 	return key
 	
 func combine(other):

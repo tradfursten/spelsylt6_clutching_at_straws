@@ -1,8 +1,8 @@
-[gd_scene load_steps=17 format=2]
+[gd_scene load_steps=18 format=2]
 
 [ext_resource path="res://src/InventoryDisplay.tscn" type="PackedScene" id=1]
 [ext_resource path="res://src/Main.gd" type="Script" id=2]
-[ext_resource path="res://assets/background/ground.png" type="Texture" id=3]
+[ext_resource path="res://src/ground.tscn" type="PackedScene" id=3]
 [ext_resource path="res://src/items/ItemBase.tscn" type="PackedScene" id=4]
 [ext_resource path="res://assets/background/background_large.png" type="Texture" id=5]
 [ext_resource path="res://assets/background/clouds.png" type="Texture" id=6]
@@ -14,12 +14,9 @@
 [ext_resource path="res://assets/items/chicken.tres" type="Resource" id=12]
 [ext_resource path="res://assets/items/straw.png" type="Texture" id=13]
 [ext_resource path="res://assets/items/Straw.tres" type="Resource" id=14]
-
-[sub_resource type="RectangleShape2D" id=1]
-extents = Vector2( 3124.1, 63.4932 )
-
-[sub_resource type="RectangleShape2D" id=2]
-extents = Vector2( 2485.94, 114.737 )
+[ext_resource path="res://assets/background/cloud_3.png" type="Texture" id=15]
+[ext_resource path="res://assets/items/matches.tres" type="Resource" id=16]
+[ext_resource path="res://assets/items/matches_animated.tres" type="Texture" id=17]
 
 [node name="Falling" type="Node2D" groups=[
 "cutscene_changer",
@@ -38,12 +35,18 @@ scale = Vector2( 2, 1 )
 texture = ExtResource( 5 )
 centered = false
 
+[node name="ParallaxLayer4" type="ParallaxLayer" parent="ParallaxBackground"]
+motion_scale = Vector2( 1, 2 )
+motion_mirroring = Vector2( 1024, 600 )
+
+[node name="Sprite" type="Sprite" parent="ParallaxBackground/ParallaxLayer4"]
+texture = ExtResource( 15 )
+
 [node name="ParallaxLayer2" type="ParallaxLayer" parent="ParallaxBackground"]
 motion_scale = Vector2( 1.2, 1.2 )
 motion_mirroring = Vector2( 1024, 600 )
 
 [node name="Sprite" type="Sprite" parent="ParallaxBackground/ParallaxLayer2"]
-modulate = Color( 1, 1, 1, 0.345098 )
 texture = ExtResource( 6 )
 centered = false
 
@@ -57,28 +60,7 @@ position = Vector2( 0, 1.06256 )
 texture = ExtResource( 10 )
 centered = false
 
-[node name="ground" type="Node2D" parent="."]
-
-[node name="StaticBody2D" type="StaticBody2D" parent="ground"]
-position = Vector2( 658.362, 3438.39 )
-collision_layer = 2
-collision_mask = 3
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="ground/StaticBody2D"]
-position = Vector2( -5.04065, 19.3225 )
-shape = SubResource( 1 )
-
-[node name="Area2D" type="Area2D" parent="ground"]
-collision_layer = 4
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="ground/Area2D"]
-position = Vector2( 542.385, 3500 )
-shape = SubResource( 2 )
-
-[node name="Sprite" type="Sprite" parent="ground/Area2D/CollisionShape2D"]
-position = Vector2( 242.723, 150.958 )
-scale = Vector2( 5.68255, 1.08261 )
-texture = ExtResource( 3 )
+[node name="ground" parent="." instance=ExtResource( 3 )]
 
 [node name="Player" parent="." instance=ExtResource( 9 )]
 position = Vector2( 522.02, 252.616 )
@@ -86,18 +68,42 @@ position = Vector2( 522.02, 252.616 )
 [node name="items" type="Node2D" parent="."]
 
 [node name="Chicken" parent="items" instance=ExtResource( 11 )]
-position = Vector2( 601.448, 874.788 )
+position = Vector2( 730.252, 1296.04 )
+item = ExtResource( 12 )
+
+[node name="Chicken2" parent="items" instance=ExtResource( 11 )]
+position = Vector2( 279.439, 1525.14 )
 item = ExtResource( 12 )
 
 [node name="Anvil" parent="items" instance=ExtResource( 4 )]
-position = Vector2( 465.957, 714.437 )
+position = Vector2( 401.555, 998.439 )
+texture = ExtResource( 8 )
+item = ExtResource( 7 )
+
+[node name="Anvil2" parent="items" instance=ExtResource( 4 )]
+position = Vector2( 714.063, 379.758 )
 texture = ExtResource( 8 )
 item = ExtResource( 7 )
 
 [node name="Straw" parent="items" instance=ExtResource( 4 )]
-position = Vector2( 523.862, 371.017 )
+position = Vector2( 589.515, 800.337 )
 texture = ExtResource( 13 )
 item = ExtResource( 14 )
+
+[node name="Straw2" parent="items" instance=ExtResource( 4 )]
+position = Vector2( 749.992, 739.103 )
+texture = ExtResource( 13 )
+item = ExtResource( 14 )
+
+[node name="Matches" parent="items" instance=ExtResource( 4 )]
+position = Vector2( 485.654, 615.513 )
+texture = ExtResource( 17 )
+item = ExtResource( 16 )
+
+[node name="Matches2" parent="items" instance=ExtResource( 4 )]
+position = Vector2( 252.329, 1250.03 )
+texture = ExtResource( 17 )
+item = ExtResource( 16 )
 
 [node name="Control" type="CanvasLayer" parent="."]
 
@@ -117,5 +123,3 @@ margin_top = 10.0
 margin_right = 512.0
 margin_bottom = 10.0
 columns = 10
-
-[connection signal="body_entered" from="ground/Area2D" to="." method="_on_Area2D_body_entered"]

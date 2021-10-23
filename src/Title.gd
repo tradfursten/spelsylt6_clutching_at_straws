@@ -11,4 +11,5 @@ func get_name():
 
 func _on_Button_pressed() -> void:
 	print("Button pressed")
+	Audioplayer.play_select()
 	emit_signal("level_completed", "Title")

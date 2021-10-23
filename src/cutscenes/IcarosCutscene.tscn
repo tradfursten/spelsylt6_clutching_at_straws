@@ -1,0 +1,200 @@
+[gd_scene load_steps=17 format=2]
+
+[ext_resource path="res://assets/background/background_large.png" type="Texture" id=1]
+[ext_resource path="res://assets/player/smoke_cloud.png" type="Texture" id=2]
+[ext_resource path="res://assets/background/sun.png" type="Texture" id=3]
+[ext_resource path="res://assets/player/flying_with_straws.png" type="Texture" id=4]
+[ext_resource path="res://src/cutscenes/IcarosCutscene.gd" type="Script" id=5]
+
+[sub_resource type="AtlasTexture" id=1]
+atlas = ExtResource( 2 )
+region = Rect2( 0, 0, 46, 46 )
+
+[sub_resource type="AtlasTexture" id=2]
+atlas = ExtResource( 2 )
+region = Rect2( 46, 0, 46, 46 )
+
+[sub_resource type="AtlasTexture" id=3]
+atlas = ExtResource( 2 )
+region = Rect2( 92, 0, 46, 46 )
+
+[sub_resource type="AtlasTexture" id=4]
+atlas = ExtResource( 2 )
+region = Rect2( 138, 0, 46, 46 )
+
+[sub_resource type="AtlasTexture" id=5]
+atlas = ExtResource( 2 )
+region = Rect2( 184, 0, 46, 46 )
+
+[sub_resource type="AtlasTexture" id=6]
+atlas = ExtResource( 2 )
+region = Rect2( 230, 0, 46, 46 )
+
+[sub_resource type="AtlasTexture" id=7]
+atlas = ExtResource( 4 )
+region = Rect2( 0, 0, 46, 32 )
+
+[sub_resource type="AtlasTexture" id=8]
+atlas = ExtResource( 4 )
+region = Rect2( 46, 0, 46, 32 )
+
+[sub_resource type="AtlasTexture" id=9]
+atlas = ExtResource( 4 )
+region = Rect2( 92, 0, 46, 32 )
+
+[sub_resource type="SpriteFrames" id=10]
+animations = [ {
+"frames": [ SubResource( 1 ), SubResource( 2 ), SubResource( 3 ), SubResource( 4 ), SubResource( 5 ), SubResource( 6 ) ],
+"loop": true,
+"name": "smoke",
+"speed": 5.0
+}, {
+"frames": [  ],
+"loop": true,
+"name": "empty",
+"speed": 5.0
+}, {
+"frames": [ SubResource( 7 ), SubResource( 8 ), SubResource( 9 ) ],
+"loop": true,
+"name": "default",
+"speed": 5.0
+} ]
+
+[sub_resource type="Animation" id=11]
+resource_name = "icaros"
+length = 10.0
+tracks/0/type = "value"
+tracks/0/path = NodePath("player:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 7.2 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector2( 2, 2 ), Vector2( 0.7, 0.7 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("player:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 7.2, 9 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( -20.5113, 382.764 ), Vector2( 281.405, -110.349 ), Vector2( 390.173, -165.465 ) ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("player/CPUParticles2D2:emitting")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0, 8.1, 9 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 1,
+"values": [ false, true, false ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("player/CPUParticles2D:emitting")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0, 8.1, 9 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 1,
+"values": [ false, true, false ]
+}
+tracks/4/type = "value"
+tracks/4/path = NodePath("player:animation")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"times": PoolRealArray( 0, 9, 9.8 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 1,
+"values": [ "default", "smoke", "empty" ]
+}
+tracks/5/type = "method"
+tracks/5/path = NodePath(".")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/keys = {
+"times": PoolRealArray( 8.1, 10 ),
+"transitions": PoolRealArray( 1, 1 ),
+"values": [ {
+"args": [  ],
+"method": "burn"
+}, {
+"args": [  ],
+"method": "game_over"
+} ]
+}
+
+[node name="IcarosCutscene" type="Node2D"]
+script = ExtResource( 5 )
+
+[node name="Sprite" type="Sprite" parent="."]
+position = Vector2( 17.8529, 899.439 )
+scale = Vector2( 1.68691, 1.17983 )
+texture = ExtResource( 1 )
+
+[node name="Camera2D" type="Camera2D" parent="."]
+current = true
+
+[node name="sun" type="Sprite" parent="."]
+position = Vector2( 421.388, -212.289 )
+scale = Vector2( 3, 3 )
+texture = ExtResource( 3 )
+
+[node name="player" type="AnimatedSprite" parent="."]
+position = Vector2( 390.173, -165.465 )
+scale = Vector2( 0.7, 0.7 )
+frames = SubResource( 10 )
+animation = "smoke"
+frame = 4
+playing = true
+
+[node name="CPUParticles2D" type="CPUParticles2D" parent="player"]
+position = Vector2( 11.9408, -2.62538 )
+scale = Vector2( 1.42857, 1.42857 )
+emitting = false
+amount = 200
+randomness = 1.0
+lifetime_randomness = 1.0
+direction = Vector2( 0, 0 )
+initial_velocity = 30.0
+initial_velocity_random = 1.0
+angular_velocity = -74.81
+angular_velocity_random = 1.0
+linear_accel = 9.09
+color = Color( 0.964706, 0.862745, 0.0470588, 1 )
+
+[node name="CPUParticles2D2" type="CPUParticles2D" parent="player"]
+position = Vector2( -12.0898, -1.44002 )
+scale = Vector2( 1.42857, 1.42857 )
+emitting = false
+amount = 200
+randomness = 1.0
+lifetime_randomness = 1.0
+direction = Vector2( 0, 0 )
+spread = 180.0
+initial_velocity = 30.0
+initial_velocity_random = 1.0
+angular_velocity = -74.81
+angular_velocity_random = 1.0
+linear_accel = 9.09
+color = Color( 0.964706, 0.862745, 0.0470588, 1 )
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+anims/icaros = SubResource( 11 )

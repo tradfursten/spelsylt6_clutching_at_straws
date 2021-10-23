@@ -6,6 +6,7 @@ var next_scene
 var deaths = []
 
 func _ready() -> void:
+	Audioplayer.play_song()
 	current_scene = $Title
 	current_scene.connect("level_completed", self, "_on_level_completed")
 	current_scene.connect("level_failed", self, "_on_level_failed")
@@ -63,4 +64,4 @@ func _on_AnimationPlayer_animation_finished(anim_name: String) -> void:
 
 func _on_restart():
 	print("Restart")
-	handle_scene_change("Title")
+	handle_scene_change("Falling")

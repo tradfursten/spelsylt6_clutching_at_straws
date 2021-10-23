@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/fly.wav-5fb882bb91e8e2d62384de0e9c6cdd33.sample"
+
+[deps]
+
+source_file="res://assets/sound/fly.wav"
+dest_files=[ "res://.import/fly.wav-5fb882bb91e8e2d62384de0e9c6cdd33.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop=true
+compress/mode=0

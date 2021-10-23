@@ -1,0 +1,351 @@
+[gd_scene load_steps=16 format=2]
+
+[ext_resource path="res://src/cutscenes/LoafOfBreadCutscene.gd" type="Script" id=1]
+[ext_resource path="res://assets/background/background_large.png" type="Texture" id=2]
+[ext_resource path="res://assets/player/holding_bread.png" type="Texture" id=3]
+[ext_resource path="res://assets/player/pecking_seagull.png" type="Texture" id=4]
+[ext_resource path="res://assets/player/seagull.png" type="Texture" id=5]
+[ext_resource path="res://src/BloodSplaterComponent.tscn" type="PackedScene" id=6]
+[ext_resource path="res://src/BloodParticle.tscn" type="PackedScene" id=7]
+
+[sub_resource type="AtlasTexture" id=1]
+atlas = ExtResource( 3 )
+region = Rect2( 0, 0, 32, 32 )
+
+[sub_resource type="SpriteFrames" id=2]
+animations = [ {
+"frames": [ SubResource( 1 ) ],
+"loop": true,
+"name": "default",
+"speed": 5.0
+} ]
+
+[sub_resource type="AtlasTexture" id=3]
+atlas = ExtResource( 4 )
+region = Rect2( 0, 0, 32, 32 )
+
+[sub_resource type="AtlasTexture" id=4]
+atlas = ExtResource( 4 )
+region = Rect2( 32, 0, 32, 32 )
+
+[sub_resource type="AtlasTexture" id=5]
+atlas = ExtResource( 5 )
+region = Rect2( 0, 0, 32, 32 )
+
+[sub_resource type="AtlasTexture" id=6]
+atlas = ExtResource( 5 )
+region = Rect2( 32, 0, 32, 32 )
+
+[sub_resource type="SpriteFrames" id=7]
+animations = [ {
+"frames": [ SubResource( 3 ), SubResource( 4 ) ],
+"loop": true,
+"name": "pecking",
+"speed": 5.0
+}, {
+"frames": [ SubResource( 5 ), SubResource( 6 ) ],
+"loop": true,
+"name": "flying",
+"speed": 5.0
+} ]
+
+[sub_resource type="Animation" id=8]
+resource_name = "default"
+length = 5.0
+tracks/0/type = "value"
+tracks/0/path = NodePath("bird:animation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 1.4 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ "flying", "pecking" ]
+}
+tracks/1/type = "bezier"
+tracks/1/path = NodePath("bird:position:x")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"points": PoolRealArray( 546.051, -0.25, 0, 0.25, 0, 19.9659, -0.25, 0, 0.25, 0 ),
+"times": PoolRealArray( 0, 1.4 )
+}
+tracks/2/type = "bezier"
+tracks/2/path = NodePath("bird:position:y")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"points": PoolRealArray( -70.0766, -0.25, 0, 0.25, 0, -3.11266, -0.25, 0, 0.25, 0 ),
+"times": PoolRealArray( 0, 1.4 )
+}
+tracks/3/type = "bezier"
+tracks/3/path = NodePath("bird2:position:x")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"points": PoolRealArray( 613.268, -0.25, 0, 0.25, 0, 19.8552, -0.25, 0, 0.25, 0 ),
+"times": PoolRealArray( 0, 1.7 )
+}
+tracks/4/type = "bezier"
+tracks/4/path = NodePath("bird2:position:y")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"points": PoolRealArray( -188.216, -0.25, 0, 0.25, 0, -8.77372, -0.25, 0, 0.25, 0 ),
+"times": PoolRealArray( 0, 1.7 )
+}
+tracks/5/type = "value"
+tracks/5/path = NodePath("bird2:animation")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/keys = {
+"times": PoolRealArray( 0, 1.7 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ "flying", "pecking" ]
+}
+tracks/6/type = "bezier"
+tracks/6/path = NodePath("bird3:position:x")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/keys = {
+"points": PoolRealArray( 599.689, -0.25, 0, 0.25, 0, 19.8163, -0.25, 0, 0.25, 0 ),
+"times": PoolRealArray( 0, 1.9 )
+}
+tracks/7/type = "bezier"
+tracks/7/path = NodePath("bird3:position:y")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/keys = {
+"points": PoolRealArray( 115.28, -0.25, 0, 0.25, 0, 12.8957, -0.25, 0, 0.25, 0 ),
+"times": PoolRealArray( 0, 1.9 )
+}
+tracks/8/type = "value"
+tracks/8/path = NodePath("bird3:animation")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/keys = {
+"times": PoolRealArray( 0, 1.9 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ "flying", "pecking" ]
+}
+tracks/9/type = "value"
+tracks/9/path = NodePath("bird4:animation")
+tracks/9/interp = 1
+tracks/9/loop_wrap = true
+tracks/9/imported = false
+tracks/9/enabled = true
+tracks/9/keys = {
+"times": PoolRealArray( 0, 2 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ "flying", "pecking" ]
+}
+tracks/10/type = "bezier"
+tracks/10/path = NodePath("bird4:position:x")
+tracks/10/interp = 1
+tracks/10/loop_wrap = true
+tracks/10/imported = false
+tracks/10/enabled = true
+tracks/10/keys = {
+"points": PoolRealArray( -564.731, -0.25, 0, 0.25, 0, -19.5088, -0.25, 0, 0.25, 0 ),
+"times": PoolRealArray( 0, 2 )
+}
+tracks/11/type = "bezier"
+tracks/11/path = NodePath("bird4:position:y")
+tracks/11/interp = 1
+tracks/11/loop_wrap = true
+tracks/11/imported = false
+tracks/11/enabled = true
+tracks/11/keys = {
+"points": PoolRealArray( -121.678, -0.25, 0, 0.25, 0, -4.78062, -0.25, 0, 0.25, 0 ),
+"times": PoolRealArray( 0, 2 )
+}
+tracks/12/type = "value"
+tracks/12/path = NodePath("bird5:animation")
+tracks/12/interp = 1
+tracks/12/loop_wrap = true
+tracks/12/imported = false
+tracks/12/enabled = true
+tracks/12/keys = {
+"times": PoolRealArray( 0, 1.3 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ "flying", "pecking" ]
+}
+tracks/13/type = "bezier"
+tracks/13/path = NodePath("bird5:position:x")
+tracks/13/interp = 1
+tracks/13/loop_wrap = true
+tracks/13/imported = false
+tracks/13/enabled = true
+tracks/13/keys = {
+"points": PoolRealArray( -543.683, -0.25, 0, 0.25, 0, -20.1198, -0.25, 0, 0.25, 0 ),
+"times": PoolRealArray( 0, 1.3 )
+}
+tracks/14/type = "bezier"
+tracks/14/path = NodePath("bird5:position:y")
+tracks/14/interp = 1
+tracks/14/loop_wrap = true
+tracks/14/imported = false
+tracks/14/enabled = true
+tracks/14/keys = {
+"points": PoolRealArray( -15.7596, -0.25, 0, 0.25, 0, 5.77518, -0.25, 0, 0.25, 0 ),
+"times": PoolRealArray( 0, 1.3 )
+}
+tracks/15/type = "value"
+tracks/15/path = NodePath("bird6:animation")
+tracks/15/interp = 1
+tracks/15/loop_wrap = true
+tracks/15/imported = false
+tracks/15/enabled = true
+tracks/15/keys = {
+"times": PoolRealArray( 0, 2.2 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ "flying", "pecking" ]
+}
+tracks/16/type = "bezier"
+tracks/16/path = NodePath("bird6:position:x")
+tracks/16/interp = 1
+tracks/16/loop_wrap = true
+tracks/16/imported = false
+tracks/16/enabled = true
+tracks/16/keys = {
+"points": PoolRealArray( -598.121, -0.25, 0, 0.25, 0, -18.0084, -0.25, 0, 0.25, 0 ),
+"times": PoolRealArray( 0, 2.2 )
+}
+tracks/17/type = "bezier"
+tracks/17/path = NodePath("bird6:position:y")
+tracks/17/interp = 1
+tracks/17/loop_wrap = true
+tracks/17/imported = false
+tracks/17/enabled = true
+tracks/17/keys = {
+"points": PoolRealArray( 123.428, -0.25, 0, 0.25, 0, 14.6948, -0.25, 0, 0.25, 0 ),
+"times": PoolRealArray( 0, 2.2 )
+}
+tracks/18/type = "method"
+tracks/18/path = NodePath(".")
+tracks/18/interp = 1
+tracks/18/loop_wrap = true
+tracks/18/imported = false
+tracks/18/enabled = true
+tracks/18/keys = {
+"times": PoolRealArray( 1.9, 2.3, 2.7, 3, 3.5, 3.8, 4.1, 4.4, 4.8, 5 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1, 1, 1 ),
+"values": [ {
+"args": [  ],
+"method": "_splatter"
+}, {
+"args": [  ],
+"method": "_splatter"
+}, {
+"args": [  ],
+"method": "_splatter"
+}, {
+"args": [  ],
+"method": "_splatter"
+}, {
+"args": [  ],
+"method": "_splatter"
+}, {
+"args": [  ],
+"method": "_splatter"
+}, {
+"args": [  ],
+"method": "_splatter"
+}, {
+"args": [  ],
+"method": "_splatter"
+}, {
+"args": [  ],
+"method": "_splatter"
+}, {
+"args": [  ],
+"method": "_on_game_over"
+} ]
+}
+
+[node name="LoafOfBread" type="Node2D"]
+script = ExtResource( 1 )
+
+[node name="Sprite" type="Sprite" parent="."]
+position = Vector2( -3.4731, -330.042 )
+scale = Vector2( 2.02308, 1 )
+texture = ExtResource( 2 )
+
+[node name="Player" type="AnimatedSprite" parent="."]
+frames = SubResource( 2 )
+
+[node name="Camera2D" type="Camera2D" parent="Player"]
+current = true
+
+[node name="BloodSplaterComponent" parent="Player" instance=ExtResource( 6 )]
+BloodParticleScene = ExtResource( 7 )
+BloodParticleNumber = 20
+RandomVelocity = 100.0
+
+[node name="bird" type="AnimatedSprite" parent="."]
+position = Vector2( 19.9659, -3.11266 )
+frames = SubResource( 7 )
+animation = "pecking"
+frame = 1
+playing = true
+
+[node name="bird2" type="AnimatedSprite" parent="."]
+position = Vector2( 19.8552, -8.77372 )
+frames = SubResource( 7 )
+animation = "pecking"
+playing = true
+
+[node name="bird3" type="AnimatedSprite" parent="."]
+position = Vector2( 19.8163, 12.8957 )
+frames = SubResource( 7 )
+animation = "pecking"
+playing = true
+
+[node name="bird4" type="AnimatedSprite" parent="."]
+position = Vector2( -32.7442, -7.61832 )
+frames = SubResource( 7 )
+animation = "flying"
+playing = true
+flip_h = true
+
+[node name="bird5" type="AnimatedSprite" parent="."]
+position = Vector2( -20.1198, 5.77518 )
+frames = SubResource( 7 )
+animation = "pecking"
+frame = 1
+playing = true
+flip_h = true
+
+[node name="bird6" type="AnimatedSprite" parent="."]
+position = Vector2( -78.1324, 25.964 )
+frames = SubResource( 7 )
+animation = "flying"
+frame = 1
+playing = true
+flip_h = true
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+anims/default = SubResource( 8 )

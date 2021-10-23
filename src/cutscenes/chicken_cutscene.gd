@@ -16,6 +16,7 @@ func _on_Anvil_body_entered(_body: Node) -> void:
 
 func kill_player():
 	print("kill player\n")
+	Audioplayer.play_hit_ground()
 	$Player.mode = RigidBody2D.MODE_STATIC
 	$Anvil.mode = RigidBody2D.MODE_STATIC
 	$Player.rotation_degrees = 0
