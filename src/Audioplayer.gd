@@ -10,8 +10,8 @@ var select = load("res://assets/sound/select.wav")
 var pick = load("res://assets/sound/pick.wav")
 
 
-var song = load("res://assets/sound/Clutching At Straws.wav")
-var wind = load("res://assets/sound/Vindljud.wav")
+var song = load("res://assets/sound/Clutching At Straws.mp3")
+var wind = load("res://assets/sound/Vindljud.mp3")
 
 func play_pick_up():
 	print("audioplayer: play pick up")
